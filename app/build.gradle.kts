@@ -30,12 +30,28 @@ android {
             )
         }
     }
+
+    productFlavors {
+        flavorDimensions += "version"
+
+        create("production") {
+            applicationIdSuffix = ".production"
+            versionNameSuffix = "-production"
+            resValue("string", "message", "This is a production App.")
+        }
+        create("development") {
+            applicationIdSuffix =".development"
+            versionNameSuffix = "-development"
+            resValue("string", "message", "This is a development App")
+        }
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
     buildFeatures {
         compose = true
+        resValues = true
     }
 }
 
